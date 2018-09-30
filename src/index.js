@@ -318,16 +318,41 @@
 
 // render(<App />, document.getElementById("root"));
 
+// import React from "react";
+// import { render } from "react-dom";
+// import { createStore } from "redux";
+// import reducer from "./reducer";
+
+// import { Provider } from "react-redux";
+// import App from "./App";
+
+// const store = createStore(reducer);
+// store.subscribe(() => {
+//   console.log(store.getState());
+// });
+
+// store.dispatch({ type: "PLUS", payload: { num: 1 } });
+// store.dispatch({ type: "PLUS", payload: { num: 10 } });
+
+// store.dispatch({ type: "MINUS", payload: { num: 1 } });
+// store.dispatch({ type: "MINUS", payload: { num: 10 } });
+
+import React from "react";
+import { render } from "react-dom";
 import { createStore } from "redux";
 import reducer from "./reducer";
+
+import { Provider } from "react-redux";
+import App from "./App";
 
 const store = createStore(reducer);
 store.subscribe(() => {
   console.log(store.getState());
 });
 
-store.dispatch({ type: "PLUS", payload: { num: 1 } });
-store.dispatch({ type: "PLUS", payload: { num: 10 } });
-
-store.dispatch({ type: "MINUS", payload: { num: 1 } });
-store.dispatch({ type: "MINUS", payload: { num: 10 } });
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
