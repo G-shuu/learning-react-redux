@@ -336,16 +336,13 @@ import React from "react";
 import { render } from "react-dom";
 
 import { createStore } from "redux";
-import reducer from "./reducer";
+import reducer from "./reducers";
 
+import rootReducer from "./reducers";
 import { Provider } from "react-redux";
 import App from "./containers/App";
 
-const store = createStore(reducer);
-store.subscribe(() => {
-  console.log(store.getState());
-});
-
+const store = createStore(rootReducer);
 render(
   <Provider store={store}>
     <App />
