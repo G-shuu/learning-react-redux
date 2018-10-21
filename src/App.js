@@ -1,44 +1,17 @@
 import React from "react";
-import { connect } from "react-redux";
 
-const App = ({ number, plus, minus }) => (
-  <div>
-    <h2>App {number}</h2>
-    <button
-      onClick={() => {
-        plus(10);
-      }}
-    >
-      plus 10
-    </button>
-    <button
-      onClick={() => {
-        minus(10);
-      }}
-    >
-      minus 10
-    </button>
-  </div>
-);
+import ImageList from "./containers/ImageList";
 
-const mapStateToProps = state => {
-  return {
-    number: state
-  };
+import Search from "./containers/Search";
+
+const App = () => {
+  return (
+    <div>
+      App
+      <Search />
+      <ImageList />
+    </div>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    plus: num => {
-      dispatch({ type: "PLUS", payload: { num: num } });
-    },
-    minus: num => {
-      dispatch({ type: "MINUS", payload: { num: num } });
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;
